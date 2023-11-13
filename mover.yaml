@@ -1,5 +1,5 @@
 - name: Transferir Películas
-  hosts: 192.168.100.193
+  hosts: http://192.168.100.193/#/
   become: true  # Ejecutar comandos como sudo
 
   tasks:
