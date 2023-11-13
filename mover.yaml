@@ -1,0 +1,11 @@
+---
+- name: Transferir Películas
+  hosts: tu_servidor
+  become: true  # Ejecutar comandos como sudo
+
+  tasks:
+    - name: Mover archivos de la carpeta de descargas a la carpeta de películas
+      command: mv /ruta/de/tu/carpeta/descargas/*.mkv /ruta/de/tu/carpeta/movies/
+      args:
+        chdir: /ruta/de/tu/carpeta/descargas/
+      become_user: tu_usuario
