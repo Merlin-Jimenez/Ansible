@@ -7,7 +7,7 @@
     - name: Mover archivos de la carpeta de descargas a la carpeta de películas
       command: mv /Root/DATA/Downloads/complete/*.mkv /Root/DATA/Media/movies/
       args:
- chkdir: /Root/DATA/Downloads/
+
  become_user: tu_usuario
  become_method: sudo
  become_flags: '-H -S -n'
