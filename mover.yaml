@@ -1,11 +1,11 @@
 ---
 - name: Transferir Películas
-  hosts: tu_servidor
+  hosts: 192.168.100.193
   become: true  # Ejecutar comandos como sudo
 
   tasks:
     - name: Mover archivos de la carpeta de descargas a la carpeta de películas
-      command: mv /ruta/de/tu/carpeta/descargas/*.mkv /ruta/de/tu/carpeta/movies/
+      command: mv /Root/DATA/Downloads/complete/*.mkv /Root/DATA/Media/movies/
       args:
-        chdir: /ruta/de/tu/carpeta/descargas/
-      become_user: tu_usuario
+        chdir: /Root/DATA/Downloads/
+      become_user: Tuna
