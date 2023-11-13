@@ -1,4 +1,3 @@
----
 - name: Transferir Películas
   hosts: 192.168.100.193
   become: true  # Ejecutar comandos como sudo
@@ -8,7 +7,7 @@
       command: mv /Root/DATA/Downloads/complete/*.mkv /Root/DATA/Media/movies/
       args:
         chdir: /Root/DATA/Downloads/
- become_user: Tuna
- become_method: sudo
- become_flags: '-H -S -n'
- gather_facts: false
+      become_user: Tuna
+      become_method: sudo
+      become_flags: '-H -S -n'
+      gather_facts: false
