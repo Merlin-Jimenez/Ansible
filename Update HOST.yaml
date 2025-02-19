@@ -1,0 +1,25 @@
+- name: Actualizar VMs y LXC en Proxmox
+  hosts: prox_vms, prox_lxc
+  become: yes
+  tasks:
+    - name: Detectar la distribución
+      ansible.builtin.setup:
+      register: system_info
+
+    - name: Actualizar paquetes en Debian/Ubuntu
+      ansible.builtin.apt:
+        update_cache: yes
+        upgrade: dist
+        autoremove: yes
+        autoclean: yes
+      when: "'Debian' in system_info.ansible_facts.ansible_os_family or 'Ubuntu' in system_info.ansible_facts.ansible_distribution"
+
+    - name: Actualizar paquetes en CentOS/RHEL
+      ansible.builtin.yum:
+        name: "*"
+        state: latest
+      when: "'RedHat' in system_info.ansible_facts.ansible_os_family"
+
+    - name: Reiniciar si es necesario (solo si hay actualizaciones del kernel)
+      ansible.builtin.reboot:
+      when: system_info.ansible_facts.ansible_kernel is defined
