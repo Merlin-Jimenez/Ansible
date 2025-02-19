@@ -1,5 +1,5 @@
 - name: Actualizar VMs y LXC en Proxmox
-  hosts: Host1
+  hosts: prox_vms , prox_lxc
   become: yes
   tasks:
     - name: Detectar la distribución
